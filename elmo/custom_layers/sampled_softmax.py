@@ -40,8 +40,8 @@ class SampledSoftmax(Layer):
                 self.softmax_W if self.tied_to is None else self.tied_to.weights[0], self.softmax_b,
                 next_token_ids_batch, lstm_outputs_batch,
                 num_classes=self.num_classes,
-                num_sampled=self.num_sampled)
-                #partition_strategy='div')
+                num_sampled=self.num_sampled,
+                partition_strategy='div')
             batch_losses = tf.reduce_mean(batch_losses)
             return [batch_losses, batch_losses]
 
